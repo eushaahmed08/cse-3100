@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // Import AOS styles
+
 
 const featuredCats = [
-  { name: 'Whiskers', age: '2' ,breed:'Sphynx'},
-  { name: 'Mittens', age: '2' ,breed:'Peterbald'},
-  { name: 'Shadow', age: '1' ,breed:'Birman'},
+  { name: 'Whiskers', age: '2', breed: 'Sphynx' },
+  { name: 'Mittens', age: '2', breed: 'Peterbald' },
+  { name: 'Shadow', age: '1', breed: 'Birman' },
 ];
 
 export default function Home() {
   const [cats, setCats] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch cat images from an API endpoint and assign it to the featuredCats list
     const fetchCatImages = async () => {
       try {
         const responses = await Promise.all(featuredCats.map(() => fetch('https://api.thecatapi.com/v1/images/search').then((res) => res.json())));
@@ -20,42 +23,54 @@ export default function Home() {
         }));
 
         setCats(catsWithImages);
+        setLoading(false); // Set loading to false when images are fetched
       } catch (error) {
         console.error('Error fetching cat images:', error);
       }
     };
 
     fetchCatImages();
+    AOS.init(); // Initialize AOS for animation
   }, []);
+
 
   return (
     <>
-      <section className="text-center mt-4">
-        <h2>Welcome to Purrfect Adoption</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc Lorem
-          ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luc
-        </p>
+      <section className="text-center mt-3">
+
+        <p>Find your perfect feline companion and make a friend for life!</p>
+
       </section>
 
-      <section className="mt-5">
-        <h2>Featured cats</h2>
-        <div className="mt-2 row g-4" id="cats-container"></div>
-        <div className="mt-2 row g-4" id="cats-container">
-          {cats.map((cat, i) => (
-            <div key={i} className="col-md-4">
-              <div className="cat-card">
-                <img src={cat.image} alt={cat.name} className="img-fluid mb-2" style={{ borderRadius: '8px', height: '200px', objectFit: 'cover' }} />
-                <div className="cat-info">
-                  <h3 className="h5 mb-1">{cat.name}</h3>
-                  <p className="mb-0">Age: {cat.age}</p>
-                  <p className="mb-0">Breed: {cat.breed}</p>
-                  
+      <section className="mt-3">
+        <h2>Featured Cats</h2>
+
+        {/* Show a loading spinner while images are being fetched */}
+        {loading ? (
+          <div className="spinner-border text-primary" style={{ margin: '50px auto', display: 'block' }} role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        ) : (
+          <div className="mt-2 row g-4">
+            {cats.map((cat, i) => (
+              <div key={i} className="col-md-4" data-aos="fade-up">
+                <div className="cat-card shadow-sm rounded">
+                  <img
+                    src={cat.image}
+                    alt={cat.name}
+                    className="img-fluid mb-2 rounded"
+                    style={{ height: '200px', objectFit: 'cover' }}
+                  />
+                  <div className="cat-info p-3 bg-light rounded-bottom">
+                    <h3 className="h5 mb-1">{cat.name}</h3>
+                    <p className="mb-0">Age: {cat.age}</p>
+                    <p className="mb-0">Breed: {cat.breed}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </section>
     </>
   );

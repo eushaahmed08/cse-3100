@@ -1,73 +1,37 @@
-import { useState } from 'react';
-
 export default function ContactUs() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [status, setStatus] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Here you can send the data to your backend or email service
-    // For now, we're just logging it
-    console.log({ name, email, message });
-
-    // Set the status after form submission (can be changed based on your backend response)
-    setStatus('Thank you for reaching out! We will get back to you soon.');
-    
-    // Clear the form
-    setName('');
-    setEmail('');
-    setMessage('');
-  };
-
   return (
-    <section className="contact-us">
-      <h2 className="text-center mt-4">Contact Us</h2>
-      
-      <div className="container mt-4">
-        <form onSubmit={handleSubmit} className="contact-form">
-          <div className="mb-3">
+    <section className="contact-us" style={{ backgroundColor: '#f9f9f9', padding: '50px 0' }}>
+      <div className="container">
+        <h2 className="text-center mb-4">Contact Us</h2>
+        <p className="text-center text-muted mb-4">
+          Have questions or need assistance? Reach out to us!
+        </p>
+
+        <form className="row g-3 justify-content-center">
+          <div className="col-12">
             <label htmlFor="name" className="form-label">Name</label>
-            <input
-              type="text"
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="form-control"
-              required
-            />
+            <input type="text" className="form-control" id="name" placeholder="Your Name" />
           </div>
 
-          <div className="mb-3">
+          <div className="col-12">
             <label htmlFor="email" className="form-label">Email</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="form-control"
-              required
-            />
+            <input type="email" className="form-control" id="email" placeholder="Your Email" />
           </div>
 
-          <div className="mb-3">
+          <div className="col-12">
+            <label htmlFor="phone" className="form-label">Phone</label>
+            <input type="tel" className="form-control" id="phone" placeholder="Your Number" />
+          </div>
+
+          <div className="col-12">
             <label htmlFor="message" className="form-label">Message</label>
-            <textarea
-              id="message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              className="form-control"
-              rows="4"
-              required
-            ></textarea>
+            <textarea id="message" className="form-control" rows="4" placeholder="Your Message"></textarea>
           </div>
 
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <div className="col-12 text-center">
+            <button type="submit" className="btn btn-primary px-4">Send Message</button>
+          </div>
         </form>
-
-        {status && <div className="mt-3 alert alert-success">{status}</div>}
       </div>
     </section>
   );
