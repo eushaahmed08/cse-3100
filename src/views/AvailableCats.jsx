@@ -9,7 +9,7 @@ const availableCats = [
   { name: 'Pumpkin', age: '3', breed: 'Abyssinian' },
   { name: 'Luna', age: '4', breed: 'Persian' },
   { name: 'Simba', age: '2', breed: 'Bengal' },
-  { name: 'Simba2', age: '2', breed: 'Siamese' },
+  { name: 'Tom', age: '5', breed: 'Siamese' },
 ];
 
 export default function AvailableCats() {
@@ -60,6 +60,8 @@ export default function AvailableCats() {
 
   return (
     <section className="text-center mt-4">
+      <h2>ฅ^•ﻌ•^ฅ Available Cats</h2>
+      
      
 
       <div className="filter-container d-flex justify-content-center gap-3 my-4">

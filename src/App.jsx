@@ -4,7 +4,6 @@ import Home from './views/Home';
 import AvailableCats from './views/AvailableCats';
 import ContactUs from './views/ContactUs';
 import AboutUs from './views/AboutUs';
-import './styles.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // Import AOS styles
 

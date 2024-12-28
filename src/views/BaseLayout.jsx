@@ -1,48 +1,44 @@
 import { Link, Outlet } from 'react-router-dom';
-import Lottie from 'react-lottie'; // Import Lottie
-import animationData from '../assets/cat2.json'; // Import your animation JSON file (replace with your actual file path)
+import Lottie from 'react-lottie';
+import animationData from '../assets/cat2.json';
 
 const BaseLayout = () => {
-  // Lottie options
   const lottieOptions = {
     loop: true,
-    autoplay: true, // Animation will play automatically
-    animationData: animationData, // Your imported animation JSON file
+    autoplay: true,
+    animationData: animationData,
     rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice', // Make sure it's centered
+      preserveAspectRatio: 'xMidYMid slice',
     },
   };
 
   return (
     <div className="layout">
-      <header className="d-flex align-items-center bg-light py-3">
+      {/* Header Section */}
+      <header className="d-flex align-items-center py-3 custom-header">
         <h1 className="m-0">
-          <Link className="text-decoration-none text-dark" to="/">
+          <Link className="text-decoration-none text-white" to="/">
             Purrfect Adoption
           </Link>
         </h1>
-        {/* Lottie animation in the Navbar */}
         <div className="lottie-container" style={{ width: '50px', height: '50px' }}>
           <Lottie options={lottieOptions} height={50} width={50} />
         </div>
         <div className="flex-grow-1"></div>
-
-        
-
         <nav>
           <ul className="nav">
             <li className="nav-item">
-              <Link className="nav-link" to="/available-cats">
+              <Link className="nav-link text-white" to="/available-cats">
                 Available Cats
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/about-us">
+              <Link className="nav-link text-white" to="/about-us">
                 About Us
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/contact-us">
+              <Link className="nav-link text-white" to="/contact-us">
                 Contact Us
               </Link>
             </li>
@@ -50,12 +46,14 @@ const BaseLayout = () => {
         </nav>
       </header>
 
+      {/* Main Content */}
       <main id="content" className="container mt-4">
         <Outlet />
       </main>
 
-      <footer className="bg-light py-3">
-        <p className="text-center m-0">© Copyright 2024</p>
+      {/* Footer Section */}
+      <footer className="py-3 custom-footer">
+        <p className="text-center m-0 text-white">© Copyright 2024</p>
       </footer>
     </div>
   );

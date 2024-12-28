@@ -38,12 +38,12 @@ export default function Home() {
     <>
       <section className="text-center mt-3">
 
-        <p>Find your perfect feline companion and make a friend for life!</p>
+        <p>Find your perfect feline companion and make a friend for life! </p>
 
       </section>
 
       <section className="mt-3">
-        <h2>Featured Cats</h2>
+        <h2>≽^•⩊•^≼ Featured Cats</h2>
 
         {/* Show a loading spinner while images are being fetched */}
         {loading ? (

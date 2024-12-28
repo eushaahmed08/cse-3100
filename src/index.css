@@ -6,7 +6,11 @@
 
 header {
   padding: 1em;
+  background-color: #77CDFF; /* Add desired color */
+  color: #333; /* Optional: Set text color for better contrast */
 }
+
+
 
 main {
   flex: 1;
@@ -15,18 +19,143 @@ main {
 footer {
   padding: 1em;
   text-align: center;
+  background-color: #333; /* Add desired color */
+  color: #fff; /* Optional: Set text color for better contrast */
 }
 
+
+/* Base Layout */
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Arial', sans-serif;
+  background-color: #FFF5D7;
+  color: #333;
+}
+
+/* Cat Cards Grid Layout */
+.cat-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+/* Card Styles */
+ /* Card Hover Effect */
 .cat-card {
   border: 1px solid #ddd;
+  border-radius: 10px;
   text-align: center;
-  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  background-color: #FFF;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.cat-card:hover {
+  transform: translateY(-10px) !important;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+
+
+
+.cat-card img {
+  width: 100%;
+  height: auto; /* remove fixed height */
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .cat-info {
   background: #f8f9fa;
-  border-radius: 4px;
+  padding: 1rem;
+  border-radius: 0 0 10px 10px;
+  text-align: left;
+  color: #333;
+}
+
+.cat-info h5 {
+  font-size: 1.2rem;
+  color: #77CDFF;
+}
+
+.cat-info p {
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+/* Buttons */
+button {
+  padding: 0.5rem 1.5rem;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+button.btn-primary {
+  background-color: #77CDFF;
+  border-color: #77CDFF;
+  color: white;
+}
+
+button.btn-primary:hover {
+  background-color: #0D92F4;
+}
+
+button.btn-secondary {
+  background-color: #dfe6e9;
+  border-color: #dfe6e9;
+  color: #333;
+}
+
+button.btn-secondary:hover {
+  background-color: #b0bec5;
+}
+
+/* Filter Section */
+.filter-container {
+  background-color: #FFF;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.filter-container select,
+.filter-container input {
+  border-color: #77CDFF;
+  border-radius: 5px;
+}
+
+.filter-container label {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Grid Layout for Cat Cards */
+.row.g-3 {
+  gap: 1rem;
+}
+
+@media (max-width: 200px) {
+  .col-md-3 {
+    flex: 1 1 45%;
+  }
+}
+
+@media (max-width: 200px) {
+  .col-md-3 {
+    flex: 1 1 100%;
+  }
+}
+
+.lottie-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px; /* Adjust height as needed */
 }
